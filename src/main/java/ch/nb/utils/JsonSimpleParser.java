@@ -4,8 +4,11 @@ import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsoner;
 
 public class JsonSimpleParser {
-    public static void printJson(String jsonString) throws JsonException {
+    public static void parseJson(String jsonString) throws JsonException {
+
+        System.out.println(jsonString);
+
         JsonObject jsonObject = (JsonObject) Jsoner.deserialize(jsonString);
-        System.out.println((Number) jsonObject.get("page"));
+        System.out.println(jsonObject.get("title"));
     }
 }

@@ -34,7 +34,7 @@ public class ApiService {
     }
 
     // Search for movies by their original, translated and alternative titles.
-    public static void searchMovies(String query) throws IOException, InterruptedException, JsonException {
+    public static void searchMovies(String query) throws IOException, InterruptedException {
         String encodedQUery = URLEncoder.encode(query, StandardCharsets.UTF_8);
 
         HttpRequest request = HttpRequest.newBuilder()
@@ -45,9 +45,21 @@ public class ApiService {
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
 
-        // THE WAY WITH Gson parser
-        PrettyJsonWithGson.printJson(response.body());
-        JsonSimpleParser.printJson(response.body());
+        PrettyJsonWithGson.printJson(response.body()); // Using Gson parser exemple
+    }
+
+    public static void getMovieDetails(String id) throws JsonException, IOException, InterruptedException {
+        System.out.println(API_URL + "/movie/" + id + "?language=en-US");
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(API_URL + "/movie/" + id + "?language=en-US"))
+                .header("accept", "application/json")
+                .header("Authorization", "Bearer " + API_KEY)
+                .method("GET", HttpRequest.BodyPublishers.noBody())
+                .build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+
+        JsonSimpleParser.parseJson(response.body());
     }
 
 }

@@ -16,5 +16,8 @@ public class Main {
         // SEARCH A MOVIE
         ApiService.searchMovies("The Matrix");
 
+        // GET A MOVIE DETAILS BY ID
+        ApiService.getMovieDetails("624860");
+
     }
 }
