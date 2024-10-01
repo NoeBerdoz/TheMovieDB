@@ -30,4 +30,12 @@ public class FilmService {
         films.add(film);
     }
 
+    public void printFilms() {
+        System.out.println("---------------- FILMS ----------------");
+        for (Film film : films) {
+            System.out.println(film.getTitle());
+            System.out.println(film.getIdTheMovieDb());
+        }
+    }
+
 }

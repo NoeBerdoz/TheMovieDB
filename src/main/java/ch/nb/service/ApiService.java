@@ -59,7 +59,7 @@ public class ApiService {
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
 
-        JsonSimpleParser.parseJson(response.body());
+        JsonSimpleParser.parseGetMovieDetails(response.body());
     }
 
 }
