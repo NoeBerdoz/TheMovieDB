@@ -1,6 +1,6 @@
 package ch.nb.business;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Film {
@@ -9,7 +9,7 @@ public class Film {
 
     public Float voteAverage;
 
-    public Date releaseDate;
+    public LocalDate releaseDate;
 
     public Integer durationInSeconds;
 
@@ -23,7 +23,12 @@ public class Film {
 
     public String imagePath;
 
-public Film(String title, Float voteAverage, Date releaseDate, Integer durationInSeconds, Integer idTheMovieDb, String OriginalTitle, String OriginalLanguage, List<Integer> genreIds, String imagePath) {
+    public Film(String title, Integer idTheMovieDb) {
+        this.title = title;
+        this.idTheMovieDb = idTheMovieDb;
+    }
+
+    public Film(String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds, Integer idTheMovieDb, String OriginalTitle, String OriginalLanguage, List<Integer> genreIds, String imagePath) {
         this.title = title;
         this.voteAverage = voteAverage;
         this.releaseDate = releaseDate;
@@ -43,7 +48,7 @@ public Film(String title, Float voteAverage, Date releaseDate, Integer durationI
         return voteAverage;
     }
 
-    public Date getReleaseDate() {
+    public LocalDate getReleaseDate() {
         return releaseDate;
     }
 
@@ -79,7 +84,7 @@ public Film(String title, Float voteAverage, Date releaseDate, Integer durationI
         this.voteAverage = voteAverage;
     }
 
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
 
