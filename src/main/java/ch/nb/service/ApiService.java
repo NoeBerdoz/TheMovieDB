@@ -1,4 +1,4 @@
-package ch.nb.api;
+package ch.nb.service;
 
 import ch.nb.utils.PrettyJsonWithGson;
 import ch.nb.utils.JsonSimpleParser;

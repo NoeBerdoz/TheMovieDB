@@ -1,6 +1,6 @@
 package ch.nb;
 
-import ch.nb.api.ApiService;
+import ch.nb.service.ApiService;
 import com.github.cliftonlabs.json_simple.JsonException;
 
 import java.io.IOException;
