@@ -2,17 +2,16 @@ package ch.nb.service;
 
 import ch.nb.business.Film;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class FilmService {
 
     private static FilmService instance;
 
-    private List<Film> films;
+    private HashMap<Integer, Film> filmsMap;
 
     private FilmService() {
-        this.films = new ArrayList<>();
+        this.filmsMap = new HashMap<>();
     }
 
     public static FilmService getInstance() {
@@ -22,17 +21,13 @@ public class FilmService {
         return instance;
     }
 
-    public List<Film> getFilms() {
-        return films;
-    }
-
     public void addFilm(Film film) {
-        films.add(film);
+        filmsMap.put(film.getIdTheMovieDb(), film);
     }
 
     public void printFilms() {
         System.out.println("---------------- FILMS ----------------");
-        for (Film film : films) {
+        for (Film film : filmsMap.values()) {
             System.out.println(film.getTitle());
             System.out.println(film.getIdTheMovieDb());
         }
