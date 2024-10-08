@@ -22,6 +22,7 @@ public class Main {
         ApiService.getMovieDetails("624861");
         ApiService.getMovieDetails("624860");
         ApiService.getMovieDetails("624859");
+        ApiService.getMovieDetails("62560");
 
         FilmService filmService = FilmService.getInstance();
         filmService.printFilms();

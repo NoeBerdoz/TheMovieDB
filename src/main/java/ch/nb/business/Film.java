@@ -151,13 +151,12 @@ public class Film {
 
     public static String formatCurrency(BigDecimal value) {
         // Create a NumberFormat instance with grouping separator (space)
-        NumberFormat numberFormat = NumberFormat.getInstance(Locale.FRANCE);
+        NumberFormat numberFormat = NumberFormat.getInstance(Locale.FRENCH);
         numberFormat.setGroupingUsed(true); // Use grouping (thousands separator)
 
         // Format the BigDecimal value
         String formattedValue = numberFormat.format(value);
 
-        // Append the currency symbol
         return formattedValue + " $";
     }
 }
