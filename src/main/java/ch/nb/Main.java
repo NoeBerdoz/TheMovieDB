@@ -27,5 +27,10 @@ public class Main {
         FilmService filmService = FilmService.getInstance();
         filmService.printFilms();
 
+        // TODO
+        // Refactor ApiService with an http request handler method
+        // Refactor the term Film into Movie
+
+        ApiService.getMovieCredits("624860");
     }
 }
