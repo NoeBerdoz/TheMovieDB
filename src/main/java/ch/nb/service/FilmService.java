@@ -26,10 +26,18 @@ public class FilmService {
     }
 
     public void printFilms() {
+        int filmCounter = 0;
         System.out.println("---------------- FILMS ----------------");
         for (Film film : filmsMap.values()) {
-            System.out.println(film.getTitle());
-            System.out.println(film.getIdTheMovieDb());
+            System.out.println("Title: " + film.getTitle());
+            System.out.println("Release date : " + film.getReleaseDate());
+            System.out.println("Duration in seconds : " + film.getDurationInSeconds());
+            System.out.println("ID : " + film.getIdTheMovieDb());
+            System.out.println("Original title : " + film.getOriginalTitle());
+            System.out.println("Original language : " + film.getOriginalLanguage());
+            System.out.println("Image path : " + film.getImagePath());
+            System.out.println("---------------- " + filmCounter + " ----------------");
+            filmCounter++;
         }
     }
 

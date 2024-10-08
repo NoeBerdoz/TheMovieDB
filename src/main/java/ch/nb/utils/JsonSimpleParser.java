@@ -6,6 +6,7 @@ import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsoner;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class JsonSimpleParser {
 
@@ -30,12 +31,26 @@ public class JsonSimpleParser {
         JsonObject jsonObject = getJsonObject(jsonString);
 
         BigDecimal id = (BigDecimal) jsonObject.get("id");
+        BigDecimal voteAverage = (BigDecimal) jsonObject.get("vote_average");
+        BigDecimal runtime = (BigDecimal) jsonObject.get("runtime");
+        LocalDate releaseDate = LocalDate.parse((String) jsonObject.get("release_date"));
+        BigDecimal durationInSeconds = runtime.multiply(BigDecimal.valueOf(3600));
 
         Film limitedFilm = new Film(
                 (String) jsonObject.get("title"),
                 id.intValue() // Convert BigDecimal to Integer
         );
 
+        Film missingGenreFilm = new Film(
+                (String) jsonObject.get("title"),
+                voteAverage.floatValue(),
+                releaseDate,
+                durationInSeconds.intValue(),
+                id.intValue(),
+                (String) jsonObject.get("original_title"),
+                (String) jsonObject.get("original_language"),
+                (String) jsonObject.get("poster_path")
+        );
 //        Film completeFilm = new Film(
 //                (String) jsonObject.get("title"),
 //                (Float) jsonObject.get("vote_average"),
@@ -48,8 +63,7 @@ public class JsonSimpleParser {
 //                (String) jsonObject.get("poster_path")
 //        );
 
-        filmService.addFilm(limitedFilm);
-        filmService.printFilms();
+        filmService.addFilm(missingGenreFilm);
 
     }
 }

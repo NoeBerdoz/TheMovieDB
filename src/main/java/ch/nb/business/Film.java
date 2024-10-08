@@ -28,6 +28,17 @@ public class Film {
         this.idTheMovieDb = idTheMovieDb;
     }
 
+    public Film(String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds, Integer idTheMovieDb, String OriginalTitle, String OriginalLanguage, String imagePath) {
+        this.title = title;
+        this.voteAverage = voteAverage;
+        this.releaseDate = releaseDate;
+        this.durationInSeconds = durationInSeconds;
+        this.idTheMovieDb = idTheMovieDb;
+        this.OriginalTitle = OriginalTitle;
+        this.OriginalLanguage = OriginalLanguage;
+        this.imagePath = imagePath;
+    }
+
     public Film(String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds, Integer idTheMovieDb, String OriginalTitle, String OriginalLanguage, List<Integer> genreIds, String imagePath) {
         this.title = title;
         this.voteAverage = voteAverage;
