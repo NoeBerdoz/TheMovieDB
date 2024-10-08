@@ -1,12 +1,14 @@
 package ch.nb.utils;
 import ch.nb.business.Film;
 import ch.nb.service.FilmService;
+import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonException;
 import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsoner;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.HashMap;
 
 public class JsonSimpleParser {
 
@@ -36,6 +38,14 @@ public class JsonSimpleParser {
         LocalDate releaseDate = LocalDate.parse((String) jsonObject.get("release_date"));
         BigDecimal durationInSeconds = runtime.multiply(BigDecimal.valueOf(3600));
 
+        // Did this while being sick, not sure is the cleanest way to do it
+        HashMap<Integer, String> genresMap = new HashMap<>();
+        JsonArray genres = (JsonArray) jsonObject.get("genres");
+        for (Object genre : genres) {
+            JsonObject genreObject = (JsonObject) genre;
+            genresMap.put(((BigDecimal) genreObject.get("id")).intValue(), (String) genreObject.get("name"));
+        }
+
         Film limitedFilm = new Film(
                 (String) jsonObject.get("title"),
                 id.intValue() // Convert BigDecimal to Integer
@@ -51,6 +61,19 @@ public class JsonSimpleParser {
                 (String) jsonObject.get("original_language"),
                 (String) jsonObject.get("poster_path")
         );
+
+        Film film = new Film(
+                (String) jsonObject.get("title"),
+                voteAverage.floatValue(),
+                releaseDate,
+                durationInSeconds.intValue(),
+                id.intValue(),
+                (String) jsonObject.get("original_title"),
+                (String) jsonObject.get("original_language"),
+                genresMap,
+                (String) jsonObject.get("poster_path"),
+                (BigDecimal) jsonObject.get("budget")
+        );
 //        Film completeFilm = new Film(
 //                (String) jsonObject.get("title"),
 //                (Float) jsonObject.get("vote_average"),
@@ -63,7 +86,7 @@ public class JsonSimpleParser {
 //                (String) jsonObject.get("poster_path")
 //        );
 
-        filmService.addFilm(missingGenreFilm);
+        filmService.addFilm(film);
 
     }
 }
