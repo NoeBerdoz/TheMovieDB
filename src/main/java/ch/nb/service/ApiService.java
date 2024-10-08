@@ -62,4 +62,18 @@ public class ApiService {
         JsonSimpleParser.parseGetMovieDetails(response.body());
     }
 
+    public static void getMovieCredits(String idMovie) throws JsonException, IOException, InterruptedException {
+        System.out.println(API_URL + "/movie/" + idMovie + "/credits?language=en-US");
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(API_URL + "/movie/" + idMovie + "/credits?language=en-US"))
+                .header("accept", "application/json")
+                .header("Authorization", "Bearer " + API_KEY)
+                .method("GET", HttpRequest.BodyPublishers.noBody())
+                .build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+
+        JsonSimpleParser.parseGetMovieCredits(response.body());
+    }
+
 }

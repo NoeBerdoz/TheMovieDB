@@ -74,19 +74,19 @@ public class JsonSimpleParser {
                 (String) jsonObject.get("poster_path"),
                 (BigDecimal) jsonObject.get("budget")
         );
-//        Film completeFilm = new Film(
-//                (String) jsonObject.get("title"),
-//                (Float) jsonObject.get("vote_average"),
-//                (LocalDate) jsonObject.get("release_date"),
-//                3600,
-//                (Integer) jsonObject.get("id"),
-//                (String) jsonObject.get("original_title"),
-//                (String) jsonObject.get("original_language"),
-//                (List<Integer>) jsonObject.get("genre_ids"),
-//                (String) jsonObject.get("poster_path")
-//        );
 
         filmService.addFilm(film);
+
+    }
+
+    public static void parseGetMovieCredits(String jsonString) throws JsonException {
+
+        JsonObject jsonObject = getJsonObject(jsonString);
+
+        BigDecimal idMovie = (BigDecimal) jsonObject.get("id");
+
+        System.out.println("--- parseGetMovieCredits ---");
+        System.out.println("idMovie : " + idMovie);
 
     }
 }
