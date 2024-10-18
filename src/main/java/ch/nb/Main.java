@@ -27,9 +27,6 @@ public class Main {
         MovieService movieService = MovieService.getInstance();
         movieService.printMovie();
 
-        // TODO
-        // Refactor ApiService with an http request handler method
-
         ApiService.getMovieCredits("624860");
     }
 }
