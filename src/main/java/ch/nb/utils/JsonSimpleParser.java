@@ -1,6 +1,6 @@
 package ch.nb.utils;
-import ch.nb.business.Film;
-import ch.nb.service.FilmService;
+import ch.nb.business.Movie;
+import ch.nb.service.MovieService;
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonException;
 import com.github.cliftonlabs.json_simple.JsonObject;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class JsonSimpleParser {
 
-    private static final FilmService filmService = FilmService.getInstance();
+    private static final MovieService MOVIE_SERVICE = MovieService.getInstance();
 
     private static JsonObject getJsonObject(String jsonString) throws JsonException {
         return (JsonObject) Jsoner.deserialize(jsonString);
@@ -46,12 +46,12 @@ public class JsonSimpleParser {
             genresMap.put(((BigDecimal) genreObject.get("id")).intValue(), (String) genreObject.get("name"));
         }
 
-        Film limitedFilm = new Film(
+        Movie limitedMovie = new Movie(
                 (String) jsonObject.get("title"),
                 id.intValue() // Convert BigDecimal to Integer
         );
 
-        Film missingGenreFilm = new Film(
+        Movie missingGenreMovie = new Movie(
                 (String) jsonObject.get("title"),
                 voteAverage.floatValue(),
                 releaseDate,
@@ -62,7 +62,7 @@ public class JsonSimpleParser {
                 (String) jsonObject.get("poster_path")
         );
 
-        Film film = new Film(
+        Movie movie = new Movie(
                 (String) jsonObject.get("title"),
                 voteAverage.floatValue(),
                 releaseDate,
@@ -75,7 +75,7 @@ public class JsonSimpleParser {
                 (BigDecimal) jsonObject.get("budget")
         );
 
-        filmService.addFilm(film);
+        MOVIE_SERVICE.addMovie(movie);
 
     }
 

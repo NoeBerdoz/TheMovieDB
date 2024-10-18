@@ -1,7 +1,7 @@
 package ch.nb;
 
 import ch.nb.service.ApiService;
-import ch.nb.service.FilmService;
+import ch.nb.service.MovieService;
 import com.github.cliftonlabs.json_simple.JsonException;
 
 import java.io.IOException;
@@ -24,12 +24,11 @@ public class Main {
         ApiService.getMovieDetails("624859");
         ApiService.getMovieDetails("62560");
 
-        FilmService filmService = FilmService.getInstance();
-        filmService.printFilms();
+        MovieService movieService = MovieService.getInstance();
+        movieService.printMovie();
 
         // TODO
         // Refactor ApiService with an http request handler method
-        // Refactor the term Film into Movie
 
         ApiService.getMovieCredits("624860");
     }

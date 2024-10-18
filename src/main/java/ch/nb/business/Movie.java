@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Locale;
 
-public class Film {
+public class Movie {
 
     public String title;
 
@@ -28,12 +28,12 @@ public class Film {
 
     public BigDecimal budget;
 
-    public Film(String title, Integer idTheMovieDb) {
+    public Movie(String title, Integer idTheMovieDb) {
         this.title = title;
         this.idTheMovieDb = idTheMovieDb;
     }
 
-    public Film(String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds, Integer idTheMovieDb, String OriginalTitle, String OriginalLanguage, String imagePath) {
+    public Movie(String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds, Integer idTheMovieDb, String OriginalTitle, String OriginalLanguage, String imagePath) {
         this.title = title;
         this.voteAverage = voteAverage;
         this.releaseDate = releaseDate;
@@ -44,7 +44,7 @@ public class Film {
         this.imagePath = imagePath;
     }
 
-    public Film(String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds, Integer idTheMovieDb, String OriginalTitle, String OriginalLanguage, HashMap<Integer, String> genresMap, String imagePath) {
+    public Movie(String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds, Integer idTheMovieDb, String OriginalTitle, String OriginalLanguage, HashMap<Integer, String> genresMap, String imagePath) {
         this.title = title;
         this.voteAverage = voteAverage;
         this.releaseDate = releaseDate;
@@ -56,7 +56,7 @@ public class Film {
         this.imagePath = imagePath;
     }
 
-    public Film(String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds, Integer idTheMovieDb, String OriginalTitle, String OriginalLanguage, HashMap<Integer, String> genresMap, String imagePath, BigDecimal budget) {
+    public Movie(String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds, Integer idTheMovieDb, String OriginalTitle, String OriginalLanguage, HashMap<Integer, String> genresMap, String imagePath, BigDecimal budget) {
         this.title = title;
         this.voteAverage = voteAverage;
         this.releaseDate = releaseDate;
