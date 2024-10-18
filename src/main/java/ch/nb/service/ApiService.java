@@ -20,59 +20,44 @@ public class ApiService {
     private static final String API_URL = propertiesLoader.getProperty("api.url");
     private static final String API_KEY = propertiesLoader.getProperty("api.key");
 
-    // Check authentication
-    public static void getAuthentication() throws IOException, InterruptedException {
+
+    private static HttpResponse<String> sendHttpRequest(String endpoint) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(API_URL + "/authentication"))
+                .uri(URI.create(API_URL + endpoint))
                 .header("accept", "application/json")
                 .header("Authorization", "Bearer " + API_KEY)
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
+        try {
+            return HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
 
-        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+    // Check authentication
+    public static void getAuthentication() throws IOException, InterruptedException {
+        HttpResponse<String> response = sendHttpRequest("/authentication");
         PrettyJsonWithGson.printJson(response.body());
     }
 
     // Search for movies by their original, translated and alternative titles.
     public static void searchMovies(String query) throws IOException, InterruptedException {
         String encodedQUery = URLEncoder.encode(query, StandardCharsets.UTF_8);
-
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(API_URL + "/search/movie?query=" + encodedQUery + "&include_adult=false&language=en-US"))
-                .header("accept", "application/json")
-                .header("Authorization", "Bearer " + API_KEY)
-                .method("GET", HttpRequest.BodyPublishers.noBody())
-                .build();
-        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-
+        HttpResponse<String> response = sendHttpRequest("/search/movie?query=" + encodedQUery + "&include_adult=false&language=en-US");
         PrettyJsonWithGson.printJson(response.body()); // Using Gson parser exemple
     }
 
-    public static void getMovieDetails(String id) throws JsonException, IOException, InterruptedException {
-        System.out.println(API_URL + "/movie/" + id + "?language=en-US");
-
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(API_URL + "/movie/" + id + "?language=en-US"))
-                .header("accept", "application/json")
-                .header("Authorization", "Bearer " + API_KEY)
-                .method("GET", HttpRequest.BodyPublishers.noBody())
-                .build();
-        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-
+    // Get all the details from a movie by its id
+    public static void getMovieDetails(String idMovie) throws JsonException, IOException, InterruptedException {
+        HttpResponse<String> response = sendHttpRequest("/movie/" + idMovie + "?language=en-US");
         JsonSimpleParser.parseGetMovieDetails(response.body());
     }
 
+    // Get the cast and crew for a movie
     public static void getMovieCredits(String idMovie) throws JsonException, IOException, InterruptedException {
-        System.out.println(API_URL + "/movie/" + idMovie + "/credits?language=en-US");
-
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(API_URL + "/movie/" + idMovie + "/credits?language=en-US"))
-                .header("accept", "application/json")
-                .header("Authorization", "Bearer " + API_KEY)
-                .method("GET", HttpRequest.BodyPublishers.noBody())
-                .build();
-        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-
+        HttpResponse<String> response = sendHttpRequest("/movie/" + idMovie + "/credits?language=en-US");
         JsonSimpleParser.parseGetMovieCredits(response.body());
     }
 
