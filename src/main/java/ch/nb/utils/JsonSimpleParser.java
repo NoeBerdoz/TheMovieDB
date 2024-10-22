@@ -32,7 +32,7 @@ public class JsonSimpleParser {
 
         JsonObject jsonObject = getJsonObject(jsonString);
 
-        BigDecimal id = (BigDecimal) jsonObject.get("id");
+        BigDecimal tmdbId = (BigDecimal) jsonObject.get("id");
         BigDecimal voteAverage = (BigDecimal) jsonObject.get("vote_average");
         BigDecimal runtime = (BigDecimal) jsonObject.get("runtime");
         LocalDate releaseDate = LocalDate.parse((String) jsonObject.get("release_date"));
@@ -47,12 +47,12 @@ public class JsonSimpleParser {
         }
 
         Movie limitedMovie = new Movie(
-                id.intValue(), // Convert BigDecimal to Integer
+                tmdbId.intValue(), // Convert BigDecimal to Integer
                 (String) jsonObject.get("title")
         );
 
         Movie missingGenreMovie = new Movie(
-                id.intValue(),
+                tmdbId.intValue(),
                 (String) jsonObject.get("title"),
                 voteAverage.floatValue(),
                 releaseDate,
@@ -63,7 +63,7 @@ public class JsonSimpleParser {
         );
 
         Movie movie = new Movie(
-                id.intValue(),
+                tmdbId.intValue(),
                 (String) jsonObject.get("title"),
                 voteAverage.floatValue(),
                 releaseDate,
@@ -83,10 +83,10 @@ public class JsonSimpleParser {
 
         JsonObject jsonObject = getJsonObject(jsonString);
 
-        BigDecimal idMovie = (BigDecimal) jsonObject.get("id");
+        BigDecimal tmdbMovieId = (BigDecimal) jsonObject.get("id");
 
         System.out.println("--- parseGetMovieCredits ---");
-        System.out.println("idMovie : " + idMovie);
+        System.out.println("tmdbMovieId : " + tmdbMovieId);
 
     }
 }

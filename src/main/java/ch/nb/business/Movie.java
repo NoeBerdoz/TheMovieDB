@@ -8,7 +8,7 @@ import java.util.Locale;
 
 public class Movie {
 
-    public Integer idTheMovieDb;
+    public Integer tmdbMovieId;
 
     public String title;
 
@@ -28,13 +28,13 @@ public class Movie {
 
     public BigDecimal budget;
 
-    public Movie(Integer idTheMovieDb, String title) {
-        this.idTheMovieDb = idTheMovieDb;
+    public Movie(Integer tmdbMovieId, String title) {
+        this.tmdbMovieId = tmdbMovieId;
         this.title = title;
     }
 
-    public Movie(Integer idTheMovieDb, String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds, String OriginalTitle, String OriginalLanguage, String imagePath) {
-        this.idTheMovieDb = idTheMovieDb;
+    public Movie(Integer tmdbMovieId, String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds, String OriginalTitle, String OriginalLanguage, String imagePath) {
+        this.tmdbMovieId = tmdbMovieId;
         this.title = title;
         this.voteAverage = voteAverage;
         this.releaseDate = releaseDate;
@@ -44,8 +44,8 @@ public class Movie {
         this.imagePath = imagePath;
     }
 
-    public Movie(Integer idTheMovieDb, String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds , String OriginalTitle, String OriginalLanguage, HashMap<Integer, String> genresMap, String imagePath) {
-        this.idTheMovieDb = idTheMovieDb;
+    public Movie(Integer tmdbMovieId, String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds , String OriginalTitle, String OriginalLanguage, HashMap<Integer, String> genresMap, String imagePath) {
+        this.tmdbMovieId = tmdbMovieId;
         this.title = title;
         this.voteAverage = voteAverage;
         this.releaseDate = releaseDate;
@@ -56,8 +56,8 @@ public class Movie {
         this.imagePath = imagePath;
     }
 
-    public Movie(Integer idTheMovieDb, String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds, String OriginalTitle, String OriginalLanguage, HashMap<Integer, String> genresMap, String imagePath, BigDecimal budget) {
-        this.idTheMovieDb = idTheMovieDb;
+    public Movie(Integer tmdbMovieId, String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds, String OriginalTitle, String OriginalLanguage, HashMap<Integer, String> genresMap, String imagePath, BigDecimal budget) {
+        this.tmdbMovieId = tmdbMovieId;
         this.title = title;
         this.voteAverage = voteAverage;
         this.releaseDate = releaseDate;
@@ -69,8 +69,8 @@ public class Movie {
         this.budget = budget;
     }
 
-    public Integer getIdTheMovieDb() {
-        return idTheMovieDb;
+    public Integer getTmdbMovieId() {
+        return tmdbMovieId;
     }
 
     public String getTitle() {
@@ -109,8 +109,8 @@ public class Movie {
         return budget;
     }
 
-    public void setIdTheMovieDb(Integer idTheMovieDb) {
-        this.idTheMovieDb = idTheMovieDb;
+    public void setTmdbMovieId(Integer tmdbMovieId) {
+        this.tmdbMovieId = tmdbMovieId;
     }
 
     public void setTitle(String title) {

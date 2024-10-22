@@ -22,7 +22,7 @@ public class MovieService {
     }
 
     public void addMovie(Movie movie) {
-        moviesMap.put(movie.getIdTheMovieDb(), movie);
+        moviesMap.put(movie.getTmdbMovieId(), movie);
     }
 
     private void printGenres(HashMap<Integer, String> genresMap) {
@@ -39,7 +39,7 @@ public class MovieService {
             System.out.println("Vote average: " + movie.voteAverage);
             System.out.println("Release date : " + movie.getReleaseDate());
             System.out.println("Duration in seconds : " + movie.getDurationInSeconds());
-            System.out.println("ID : " + movie.getIdTheMovieDb());
+            System.out.println("ID : " + movie.getTmdbMovieId());
             System.out.println("Original title : " + movie.getOriginalTitle());
             System.out.println("Original language : " + movie.getOriginalLanguage());
             System.out.println("Genres :");

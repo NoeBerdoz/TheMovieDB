@@ -2,7 +2,7 @@ package ch.nb.business;
 
 public class Credit {
 
-    public Integer idCastTheMovieDb;
+    public Integer tmdbCastId;
 
     public Person person;
 
@@ -10,15 +10,15 @@ public class Credit {
 
     public String character;
 
-    public Credit(Integer idCastTheMovieDb, Person person, Job job, String character) {
-        this.idCastTheMovieDb = idCastTheMovieDb;
+    public Credit(Integer tmdbCastId, Person person, Job job, String character) {
+        this.tmdbCastId = tmdbCastId;
         this.person = person;
         this.job = job;
         this.character = character;
     }
 
-    public Integer getIdCastTheMovieDb() {
-        return idCastTheMovieDb;
+    public Integer getTmdbCastId() {
+        return tmdbCastId;
     }
 
     public Person getPerson() {
@@ -33,8 +33,8 @@ public class Credit {
         return character;
     }
 
-    public void setIdCastTheMovieDb(Integer idCastTheMovieDb) {
-        this.idCastTheMovieDb = idCastTheMovieDb;
+    public void setTmdbCastId(Integer tmdbCastId) {
+        this.tmdbCastId = tmdbCastId;
     }
 
     public void setPerson(Person person) {

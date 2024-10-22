@@ -2,25 +2,25 @@ package ch.nb.business;
 
 public class Person {
 
-    Integer idTheMovieDb;
+    Integer tmdbPersonId;
 
     String name;
 
-    public Person(String name, Integer idTheMovieDb) {
+    public Person(String name, Integer tmdbPersonId) {
         this.name = name;
-        this.idTheMovieDb = idTheMovieDb;
+        this.tmdbPersonId = tmdbPersonId;
     }
 
-    public Integer getIdTheMovieDb() {
-        return idTheMovieDb;
+    public Integer getTmdbPersonId() {
+        return tmdbPersonId;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setIdTheMovieDb(Integer idTheMovieDb) {
-        this.idTheMovieDb = idTheMovieDb;
+    public void setTmdbPersonId(Integer tmdbPersonId) {
+        this.tmdbPersonId = tmdbPersonId;
     }
 
     public void setName(String name) {

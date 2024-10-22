@@ -50,14 +50,14 @@ public class ApiService {
     }
 
     // Get all the details from a movie by its id
-    public static void getMovieDetails(String idMovie) throws JsonException, IOException, InterruptedException {
-        HttpResponse<String> response = sendHttpRequest("/movie/" + idMovie + "?language=en-US");
+    public static void getMovieDetails(String tmdbMovieId) throws JsonException, IOException, InterruptedException {
+        HttpResponse<String> response = sendHttpRequest("/movie/" + tmdbMovieId + "?language=en-US");
         JsonSimpleParser.parseGetMovieDetails(response.body());
     }
 
     // Get the cast and crew for a movie
-    public static void getMovieCredits(String idMovie) throws JsonException, IOException, InterruptedException {
-        HttpResponse<String> response = sendHttpRequest("/movie/" + idMovie + "/credits?language=en-US");
+    public static void getMovieCredits(String tmdbMovieId) throws JsonException, IOException, InterruptedException {
+        HttpResponse<String> response = sendHttpRequest("/movie/" + tmdbMovieId + "/credits?language=en-US");
         JsonSimpleParser.parseGetMovieCredits(response.body());
     }
 
