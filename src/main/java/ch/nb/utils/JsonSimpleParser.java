@@ -47,27 +47,27 @@ public class JsonSimpleParser {
         }
 
         Movie limitedMovie = new Movie(
-                (String) jsonObject.get("title"),
-                id.intValue() // Convert BigDecimal to Integer
+                id.intValue(), // Convert BigDecimal to Integer
+                (String) jsonObject.get("title")
         );
 
         Movie missingGenreMovie = new Movie(
+                id.intValue(),
                 (String) jsonObject.get("title"),
                 voteAverage.floatValue(),
                 releaseDate,
                 durationInSeconds.intValue(),
-                id.intValue(),
                 (String) jsonObject.get("original_title"),
                 (String) jsonObject.get("original_language"),
                 (String) jsonObject.get("poster_path")
         );
 
         Movie movie = new Movie(
+                id.intValue(),
                 (String) jsonObject.get("title"),
                 voteAverage.floatValue(),
                 releaseDate,
                 durationInSeconds.intValue(),
-                id.intValue(),
                 (String) jsonObject.get("original_title"),
                 (String) jsonObject.get("original_language"),
                 genresMap,

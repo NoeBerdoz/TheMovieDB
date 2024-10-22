@@ -8,6 +8,8 @@ import java.util.Locale;
 
 public class Movie {
 
+    public Integer idTheMovieDb;
+
     public String title;
 
     public Float voteAverage;
@@ -15,8 +17,6 @@ public class Movie {
     public LocalDate releaseDate;
 
     public Integer durationInSeconds;
-
-    public Integer idTheMovieDb;
 
     public String OriginalTitle;
 
@@ -28,45 +28,49 @@ public class Movie {
 
     public BigDecimal budget;
 
-    public Movie(String title, Integer idTheMovieDb) {
-        this.title = title;
+    public Movie(Integer idTheMovieDb, String title) {
         this.idTheMovieDb = idTheMovieDb;
+        this.title = title;
     }
 
-    public Movie(String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds, Integer idTheMovieDb, String OriginalTitle, String OriginalLanguage, String imagePath) {
+    public Movie(Integer idTheMovieDb, String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds, String OriginalTitle, String OriginalLanguage, String imagePath) {
+        this.idTheMovieDb = idTheMovieDb;
         this.title = title;
         this.voteAverage = voteAverage;
         this.releaseDate = releaseDate;
         this.durationInSeconds = durationInSeconds;
-        this.idTheMovieDb = idTheMovieDb;
         this.OriginalTitle = OriginalTitle;
         this.OriginalLanguage = OriginalLanguage;
         this.imagePath = imagePath;
     }
 
-    public Movie(String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds, Integer idTheMovieDb, String OriginalTitle, String OriginalLanguage, HashMap<Integer, String> genresMap, String imagePath) {
+    public Movie(Integer idTheMovieDb, String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds , String OriginalTitle, String OriginalLanguage, HashMap<Integer, String> genresMap, String imagePath) {
+        this.idTheMovieDb = idTheMovieDb;
         this.title = title;
         this.voteAverage = voteAverage;
         this.releaseDate = releaseDate;
         this.durationInSeconds = durationInSeconds;
-        this.idTheMovieDb = idTheMovieDb;
         this.OriginalTitle = OriginalTitle;
         this.OriginalLanguage = OriginalLanguage;
         this.genresMap = genresMap;
         this.imagePath = imagePath;
     }
 
-    public Movie(String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds, Integer idTheMovieDb, String OriginalTitle, String OriginalLanguage, HashMap<Integer, String> genresMap, String imagePath, BigDecimal budget) {
+    public Movie(Integer idTheMovieDb, String title, Float voteAverage, LocalDate releaseDate, Integer durationInSeconds, String OriginalTitle, String OriginalLanguage, HashMap<Integer, String> genresMap, String imagePath, BigDecimal budget) {
+        this.idTheMovieDb = idTheMovieDb;
         this.title = title;
         this.voteAverage = voteAverage;
         this.releaseDate = releaseDate;
         this.durationInSeconds = durationInSeconds;
-        this.idTheMovieDb = idTheMovieDb;
         this.OriginalTitle = OriginalTitle;
         this.OriginalLanguage = OriginalLanguage;
         this.genresMap = genresMap;
         this.imagePath = imagePath;
         this.budget = budget;
+    }
+
+    public Integer getIdTheMovieDb() {
+        return idTheMovieDb;
     }
 
     public String getTitle() {
@@ -83,10 +87,6 @@ public class Movie {
 
     public Integer getDurationInSeconds() {
         return durationInSeconds;
-    }
-
-    public Integer getIdTheMovieDb() {
-        return idTheMovieDb;
     }
 
     public String getOriginalTitle() {
@@ -109,6 +109,10 @@ public class Movie {
         return budget;
     }
 
+    public void setIdTheMovieDb(Integer idTheMovieDb) {
+        this.idTheMovieDb = idTheMovieDb;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -123,10 +127,6 @@ public class Movie {
 
     public void setDurationInSeconds(Integer durationInSeconds) {
         this.durationInSeconds = durationInSeconds;
-    }
-
-    public void setIdTheMovieDb(Integer idTheMovieDb) {
-        this.idTheMovieDb = idTheMovieDb;
     }
 
     public void setOriginalTitle(String OriginalTitle) {
