@@ -1,9 +1,6 @@
 package ch.nb;
 
-import ch.nb.logging.SimpleLogger;
-import ch.nb.persistence.DatabaseConnection;
-import ch.nb.service.ApiService;
-import ch.nb.service.MovieService;
+import ch.nb.persistence.utils.DatabaseConnection;
 import com.github.cliftonlabs.json_simple.JsonException;
 
 import java.io.IOException;

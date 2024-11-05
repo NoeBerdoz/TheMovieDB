@@ -2,12 +2,13 @@ package ch.nb.persistence.dao;
 
 import ch.nb.business.Movie;
 import ch.nb.logging.SimpleLogger;
-import ch.nb.persistence.DatabaseConnection;
+import ch.nb.persistence.utils.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,10 +39,39 @@ public class MovieDao implements Dao<Movie> {
 
     @Override
     public List<Movie> selectAll() {
+        String query = "SELECT * FROM MOVIES";
+
+        List<Movie> movies = new ArrayList<>();
+
+        try {
+            Connection connection = DatabaseConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            Integer countMovies = 0;
+            while (resultSet.next()) {
+                Movie movie = mapRowToMovie(resultSet);
+                movies.add(movie);
+                countMovies++;
+            }
+            SimpleLogger.info("[SELECTED] MOVIES COUNT: " + countMovies);
+
+        } catch (SQLException e) {
+            SimpleLogger.error("Failed to select all MOVIES: " + e.getMessage());
+        }
+
+        return movies;
     }
 
     @Override
     public void insert(Movie movie) {
+
+        String query = "INSERT INTO RESTAURANT (TMDB_MOVIE_ID, TITLE, VOTE_AVERAGE, RELEASE_DATE, DURATION_IN_SECONDS, ORIGINAL_TITLE, ORIGINAL_LANGUAGE, IMAGE_PATH, BUDGET) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try {
+
+        }
+
     }
 
     @Override

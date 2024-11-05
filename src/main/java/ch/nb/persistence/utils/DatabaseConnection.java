@@ -1,4 +1,4 @@
-package ch.nb.persistence;
+package ch.nb.persistence.utils;
 
 import ch.nb.logging.SimpleLogger;
 import ch.nb.utils.PropertiesLoader;
