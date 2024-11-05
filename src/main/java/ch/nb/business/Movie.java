@@ -159,4 +159,71 @@ public class Movie {
 
         return formattedValue + " $";
     }
+
+    public static class Builder {
+        private Integer tmdbMovieId;
+        private String title;
+        private Float voteAverage;
+        private LocalDate releaseDate;
+        private Integer durationInSeconds;
+        private String OriginalTitle;
+        private String OriginalLanguage;
+        private HashMap<Integer, String> genresMap;
+        private String imagePath;
+        private BigDecimal budget;
+
+        public Builder withTmdbMovieId(Integer tmdbMovieId) {
+            this.tmdbMovieId = tmdbMovieId;
+            return this;
+        }
+
+        public Builder withTitle(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder withVoteAverage(Float voteAverage) {
+            this.voteAverage = voteAverage;
+            return this;
+        }
+
+        public Builder withReleaseDate(LocalDate releaseDate) {
+            this.releaseDate = releaseDate;
+            return this;
+        }
+
+        public Builder withDurationInSeconds(Integer durationInSeconds) {
+            this.durationInSeconds = durationInSeconds;
+            return this;
+        }
+
+        public Builder withOriginalTitle(String OriginalTitle) {
+            this.OriginalTitle = OriginalTitle;
+            return this;
+        }
+
+        public Builder withOriginalLanguage(String OriginalLanguage) {
+            this.OriginalLanguage = OriginalLanguage;
+            return this;
+        }
+
+        public Builder withGenresMap(HashMap<Integer, String> genresMap) {
+            this.genresMap = genresMap;
+            return this;
+        }
+
+        public Builder withImagePath(String imagePath) {
+            this.imagePath = imagePath;
+            return this;
+        }
+
+        public Builder withBudget(BigDecimal budget) {
+            this.budget = budget;
+            return this;
+        }
+
+        public Movie build() {
+            return new Movie(tmdbMovieId, title, voteAverage, releaseDate, durationInSeconds, OriginalTitle, OriginalLanguage, genresMap, imagePath, budget);
+        }
+    }
 }
