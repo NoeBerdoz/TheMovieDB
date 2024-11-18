@@ -1,14 +1,16 @@
 package ch.nb;
 
 import ch.nb.persistence.utils.DatabaseConnection;
+import ch.nb.service.ApiService;
 import com.github.cliftonlabs.json_simple.JsonException;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, InterruptedException, JsonException {
+    public static void main(String[] args) throws IOException, InterruptedException, JsonException, SQLException {
 
         // AUTHENTICATION
         //ApiService.getAuthentication();
@@ -29,5 +31,9 @@ public class Main {
 //        ApiService.getMovieCredits("624860");
 
         DatabaseConnection.getConnection();
+
+        ApiService.getMovieDetails("624860");
+
+        DatabaseConnection.closeConnection();
     }
 }
