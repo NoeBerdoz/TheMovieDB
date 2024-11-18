@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class JsonSimpleParser {
 
-    private static final MovieService MOVIE_SERVICE = MovieService.getInstance();
+    private static final MovieService movieService = MovieService.getInstance();
 
     private static JsonObject getJsonObject(String jsonString) throws JsonException {
         return (JsonObject) Jsoner.deserialize(jsonString);
@@ -47,12 +47,12 @@ public class JsonSimpleParser {
         }
 
         Movie limitedMovie = new Movie(
-                tmdbId.intValue(), // Convert BigDecimal to Integer
+                tmdbId.longValue(), // Convert BigDecimal to Long
                 (String) jsonObject.get("title")
         );
 
         Movie missingGenreMovie = new Movie(
-                tmdbId.intValue(),
+                tmdbId.longValue(),
                 (String) jsonObject.get("title"),
                 voteAverage.floatValue(),
                 releaseDate,
@@ -63,7 +63,7 @@ public class JsonSimpleParser {
         );
 
         Movie movie = new Movie(
-                tmdbId.intValue(),
+                tmdbId.longValue(),
                 (String) jsonObject.get("title"),
                 voteAverage.floatValue(),
                 releaseDate,
@@ -75,7 +75,7 @@ public class JsonSimpleParser {
                 (BigDecimal) jsonObject.get("budget")
         );
 
-        MOVIE_SERVICE.addMovie(movie);
+        movieService.addMovie(movie);
 
     }
 
