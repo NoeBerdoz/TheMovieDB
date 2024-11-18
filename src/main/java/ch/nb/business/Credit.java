@@ -2,22 +2,28 @@ package ch.nb.business;
 
 public class Credit {
 
-    public Integer tmdbCastId;
+    private Long id;
 
-    public Person person;
+    private Long tmdbCastId;
 
-    public Job job;
+    private Person person;
 
-    public String character;
+    private Job job;
 
-    public Credit(Integer tmdbCastId, Person person, Job job, String character) {
+    private String character;
+
+    public Credit(Long tmdbCastId, Person person, Job job, String character) {
         this.tmdbCastId = tmdbCastId;
         this.person = person;
         this.job = job;
         this.character = character;
     }
 
-    public Integer getTmdbCastId() {
+    public Long getId() {
+        return id;
+    }
+
+    public Long getTmdbCastId() {
         return tmdbCastId;
     }
 
@@ -33,7 +39,11 @@ public class Credit {
         return character;
     }
 
-    public void setTmdbCastId(Integer tmdbCastId) {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setTmdbCastId(Long tmdbCastId) {
         this.tmdbCastId = tmdbCastId;
     }
 

@@ -2,6 +2,8 @@ package ch.nb.business;
 
 public class Person {
 
+    Long id;
+
     Integer tmdbPersonId;
 
     String name;
@@ -11,12 +13,20 @@ public class Person {
         this.tmdbPersonId = tmdbPersonId;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public Integer getTmdbPersonId() {
         return tmdbPersonId;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setTmdbPersonId(Integer tmdbPersonId) {
